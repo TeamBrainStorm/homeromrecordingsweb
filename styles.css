@@ -82,10 +82,14 @@ nav {
 }
 
 .logo {
-    color: var(--primary-color);
-    font-size: 1.3rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
+    height: 150px;
+    width: auto;
+}
+
+.logo img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
 }
 
 .nav-links {
