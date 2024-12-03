@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beats For Sale | Home Room Recordings</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="beats.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Home Room Recordings</div>
+            <ul class="nav-links">
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#studio">Studio</a></li>
+                <li><a href="index.html#gear">Gear</a></li>
+                <li><a href="beats.html">Beats</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="beats-hero">
+        <div class="hero-content">
+            <h1>Beats For Sale</h1>
+            <p>Premium Beats for Your Next Hit</p>
+        </div>
+    </header>
+
+    <section class="beats-section">
+        <div class="filters">
+            <button class="filter-btn active" data-genre="all">All Genres</button>
+            <button class="filter-btn" data-genre="hip-hop">Hip Hop</button>
+            <button class="filter-btn" data-genre="rnb">R&B</button>
+            <button class="filter-btn" data-genre="trap">Trap</button>
+            <button class="filter-btn" data-genre="pop">Pop</button>
+        </div>
+
+        <div class="beats-container">
+            <!-- Beat Card Template -->
+            <div class="beat-card" data-genre="hip-hop">
+                <div class="beat-image">
+                    <img src="https://images.unsplash.com/photo-1571330735066-03aaa9429d89?auto=format&fit=crop&w=500&q=80" alt="Beat artwork">
+                    <button class="play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+                <div class="beat-info">
+                    <h3>Summer Vibes</h3>
+                    <p class="genre">Hip Hop</p>
+                    <div class="beat-meta">
+                        <span><i class="fas fa-clock"></i> 3:24</span>
+                        <span><i class="fas fa-music"></i> 140 BPM</span>
+                    </div>
+                    <div class="license-options">
+                        <select>
+                            <option value="basic">Basic License - $29.99</option>
+                            <option value="premium">Premium License - $99.99</option>
+                            <option value="exclusive">Exclusive Rights - $499.99</option>
+                        </select>
+                        <button class="buy-btn">Purchase</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- More Beat Cards -->
+            <div class="beat-card" data-genre="rnb">
+                <div class="beat-image">
+                    <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=500&q=80" alt="Beat artwork">
+                    <button class="play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+                <div class="beat-info">
+                    <h3>Midnight Soul</h3>
+                    <p class="genre">R&B</p>
+                    <div class="beat-meta">
+                        <span><i class="fas fa-clock"></i> 3:45</span>
+                        <span><i class="fas fa-music"></i> 90 BPM</span>
+                    </div>
+                    <div class="license-options">
+                        <select>
+                            <option value="basic">Basic License - $29.99</option>
+                            <option value="premium">Premium License - $99.99</option>
+                            <option value="exclusive">Exclusive Rights - $499.99</option>
+                        </select>
+                        <button class="buy-btn">Purchase</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="beat-card" data-genre="trap">
+                <div class="beat-image">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=500&q=80" alt="Beat artwork">
+                    <button class="play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+                <div class="beat-info">
+                    <h3>Dark Matter</h3>
+                    <p class="genre">Trap</p>
+                    <div class="beat-meta">
+                        <span><i class="fas fa-clock"></i> 2:55</span>
+                        <span><i class="fas fa-music"></i> 145 BPM</span>
+                    </div>
+                    <div class="license-options">
+                        <select>
+                            <option value="basic">Basic License - $29.99</option>
+                            <option value="premium">Premium License - $99.99</option>
+                            <option value="exclusive">Exclusive Rights - $499.99</option>
+                        </select>
+                        <button class="buy-btn">Purchase</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Home Room Recordings. All rights reserved.</p>
+    </footer>
+
+    <script src="beats.js"></script>
+</body>
+</html>
