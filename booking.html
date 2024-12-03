@@ -174,6 +174,10 @@
                     </div>
                     <div class="summary-content">
                         <div class="summary-row">
+                            <span>Rate:</span>
+                            <span id="rate-display">Please select a service</span>
+                        </div>
+                        <div class="summary-row">
                             <span>Total Hours:</span>
                             <span id="total-hours">0</span>
                         </div>
@@ -183,6 +187,11 @@
                         </div>
                     </div>
                 </div>
+
+                <button type="button" id="cashapp-pay-btn" class="submit-btn" onclick="redirectToCashApp()" disabled>
+                    <i class="fab fa-square-cash"></i>
+                    Pay
+                </button>
 
                 <script>
                     // Set minimum date to today for all date inputs
@@ -254,6 +263,10 @@
                         // Update rate display in summary
                         const serviceText = document.getElementById('service').options[document.getElementById('service').selectedIndex].text;
                         document.getElementById('rate-display').textContent = hourlyRate ? `$${hourlyRate}/hour - ${serviceText.split('(')[0].trim()}` : 'Please select a service';
+
+                        // Enable/disable payment button based on total price
+                        const payButton = document.getElementById('cashapp-pay-btn');
+                        payButton.disabled = totalPrice === 0;
                     }
 
                     // Add event listeners for price updates
@@ -272,6 +285,45 @@
                         <span id="rate-display">Please select a service</span>
                     `;
                     summaryContent.insertBefore(rateRow, summaryContent.firstChild);
+
+                    function redirectToCashApp() {
+                        const totalPrice = document.getElementById('total-price').textContent;
+                        const amount = totalPrice.replace('$', '');
+                        const cashtag = 'homeroomrecordings';
+                        const note = `${document.getElementById('name').value} - ${document.getElementById('service').options[document.getElementById('service').selectedIndex].text}`;
+                        
+                        // Construct CashApp URL
+                        const cashappURL = `https://cash.app/$${cashtag}/${amount}`;
+                        
+                        // Save form data to localStorage before redirecting
+                        const formData = {
+                            name: document.getElementById('name').value,
+                            email: document.getElementById('email').value,
+                            phone: document.getElementById('phone').value,
+                            service: document.getElementById('service').value,
+                            dates: Array.from(document.getElementsByName('dates[]')).map(input => input.value),
+                            times: Array.from(document.getElementsByName('start_times[]')).map(select => select.value),
+                            durations: Array.from(document.getElementsByName('durations[]')).map(select => select.value),
+                            message: document.getElementById('message').value,
+                            amount: amount
+                        };
+                        localStorage.setItem('bookingFormData', JSON.stringify(formData));
+                        
+                        // Redirect to CashApp
+                        window.location.href = cashappURL;
+                    }
+
+                    // Check if returning from CashApp
+                    window.onload = function() {
+                        const formData = localStorage.getItem('bookingFormData');
+                        if (formData) {
+                            // Clear the stored data
+                            localStorage.removeItem('bookingFormData');
+                            
+                            // Show success message
+                            alert('Thank you for your payment! We will contact you shortly to confirm your booking.');
+                        }
+                    }
                 </script>
 
                 <style>
@@ -384,12 +436,102 @@
                             grid-template-columns: 1fr;
                         }
                     }
+
+                    .payment-section {
+                        margin-top: 2rem;
+                        padding-top: 1.5rem;
+                        border-top: 1px solid rgba(0, 0, 0, 0.1);
+                    }
+
+                    .payment-section h4 {
+                        margin: 0 0 1rem 0;
+                        font-size: 1.1rem;
+                        font-weight: 500;
+                    }
+
+                    .cashapp-info {
+                        background: rgba(0, 0, 0, 0.02);
+                        border-radius: var(--card-radius);
+                        padding: 1.5rem;
+                        text-align: center;
+                    }
+
+                    .cashapp-logo {
+                        height: 40px;
+                        margin-bottom: 1rem;
+                    }
+
+                    .cashapp-info p {
+                        margin: 0.5rem 0;
+                        color: var(--text-secondary);
+                    }
+
+                    .cashapp-info strong {
+                        color: var(--text-color);
+                        font-weight: 600;
+                        background: rgba(0, 0, 0, 0.05);
+                        padding: 0.3rem 0.8rem;
+                        border-radius: var(--button-radius);
+                    }
+
+                    .payment-steps {
+                        margin-top: 1.5rem;
+                        text-align: left;
+                    }
+
+                    .payment-steps p {
+                        margin: 0.5rem 0;
+                        font-size: 0.9rem;
+                        color: var(--text-secondary);
+                    }
+
+                    .submit-btn {
+                        margin-top: 1.5rem;
+                        width: 100%;
+                        padding: 1rem;
+                        background-color: #00D632;
+                        color: white;
+                        border: none;
+                        border-radius: var(--button-radius);
+                        font-size: 1rem;
+                        font-weight: 500;
+                        cursor: pointer;
+                        transition: var(--transition);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 0.5rem;
+                    }
+
+                    .submit-btn:hover:not(:disabled) {
+                        background-color: #00B12A;
+                        transform: translateY(-2px);
+                    }
+
+                    .submit-btn:disabled {
+                        background-color: #cccccc;
+                        cursor: not-allowed;
+                        transform: none;
+                    }
+
+                    .submit-btn i {
+                        font-size: 1.2rem;
+                    }
+
+                    @media (max-width: 768px) {
+                        .cashapp-info {
+                            padding: 1rem;
+                        }
+
+                        .cashapp-logo {
+                            height: 32px;
+                        }
+                    }
                 </style>
 
                 <div class="form-group">
                     <textarea id="message" name="message" placeholder="Tell us about your project" required></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Book Session</button>
             </form>
         </div>
     </section>
