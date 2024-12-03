@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Session | Home Room Recordings</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Home Room Recordings</div>
+            <ul class="nav-links">
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#studio">Studio</a></li>
+                <li><a href="index.html#gear">Gear</a></li>
+                <li><a href="beats.html">Beats</a></li>
+                <li><a href="booking.html" class="active">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-hero light-hero">
+        <div class="hero-content">
+            <h1>Book Your Session</h1>
+            <p>Let's bring your music to life</p>
+        </div>
+    </header>
+
+    <section class="booking-section">
+        <div class="section-header">
+            <h2>Get Started</h2>
+            <p class="section-subtitle">Choose your preferred way to connect with us</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email Us</h3>
+                        <p>homeroomrecordings@gmail.com</p>
+                        <a href="mailto:homeroomrecordings@gmail.com" class="contact-link">Send Email</a>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <h3>Call Us</h3>
+                        <p>(573) 416-0151</p>
+                        <a href="tel:+15734160151" class="contact-link">Call Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <form class="booking-form">
+                <div class="form-header">
+                    <h3>Book Your Session</h3>
+                    <p>Fill out the form below and we'll get back to you within 24 hours</p>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <select id="service" name="service" required>
+                        <option value="">Select Service</option>
+                        <option value="recording">Recording Session</option>
+                        <option value="mixing">Mixing</option>
+                        <option value="mastering">Mastering</option>
+                        <option value="production">Full Production</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <select id="time" name="time" required>
+                        <option value="">Preferred Time</option>
+                        <option value="morning">Morning (9AM - 1PM)</option>
+                        <option value="afternoon">Afternoon (2PM - 6PM)</option>
+                        <option value="evening">Evening (7PM - 11PM)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" placeholder="Tell us about your project" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Book Session</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="rates" class="rates-section">
+        <div class="section-header">
+            <h2>Our Rates</h2>
+            <p class="section-subtitle">Simple and transparent pricing</p>
+        </div>
+        <div class="rates-grid">
+            <div class="rate-card">
+                <div class="license-header">
+                    <h3>Emailed Mixdowns</h3>
+                    <p class="price">$30<span>/track</span></p>
+                </div>
+                <ul class="rate-features">
+                    <li><i class="fas fa-check"></i> Send Your Tracks</li>
+                    <li><i class="fas fa-check"></i> Professional Mix</li>
+                    <li><i class="fas fa-check"></i> Quick Turnaround</li>
+                    <li><i class="fas fa-check"></i> Digital Delivery</li>
+                </ul>
+            </div>
+            <div class="rate-card featured">
+                <div class="license-header">
+                    <h3>Recording Session</h3>
+                    <p class="price">$20<span>/hour</span></p>
+                </div>
+                <ul class="rate-features">
+                    <li><i class="fas fa-check"></i> Professional Equipment</li>
+                    <li><i class="fas fa-check"></i> Studio Space</li>
+                    <li><i class="fas fa-check"></i> Engineer Included</li>
+                    <li><i class="fas fa-check"></i> Basic Mix Included</li>
+                </ul>
+            </div>
+            <div class="rate-card">
+                <div class="license-header">
+                    <h3>In Studio Mixdowns</h3>
+                    <p class="price">$25<span>/track</span></p>
+                </div>
+                <ul class="rate-features">
+                    <li><i class="fas fa-check"></i> Professional Mix</li>
+                    <li><i class="fas fa-check"></i> In Person Session</li>
+                    <li><i class="fas fa-check"></i> Real-time Feedback</li>
+                    <li><i class="fas fa-check"></i> Studio Monitors</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Home Room Recordings</h3>
+                    <p>Professional recording studio in Nashville, TN</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#studio">Studio</a></li>
+                        <li><a href="index.html#gear">Gear</a></li>
+                        <li><a href="beats.html">Beats</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Home Room Recordings. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
