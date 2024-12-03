@@ -6,6 +6,284 @@
     <title>Studio | Home Room Recordings</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #C41E3A;  /* Rich Red - classic recording studio color */
+            --primary-hover: #A01830;
+            --secondary-color: #1DB954; /* Spotify Green for success states */
+            --accent-color: #FFD700;   /* Gold for accents */
+            --danger-color: #FF4444;   /* Bright Red for warnings */
+            --background-color: #ffffff;
+            --card-background: #ffffff;
+            --text-color: #1F2937;
+            --text-secondary: #6B7280;
+            --border-color: rgba(0, 0, 0, 0.1);
+            --card-radius: 8px;
+            --button-radius: 6px;
+            --transition: all 0.2s ease;
+        }
+
+        nav {
+            background: var(--primary-color);
+            width: 100%;
+        }
+
+        .nav-container {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .logo {
+            color: white;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: white;
+            background: var(--primary-hover);
+        }
+
+        .gallery-item:hover {
+            border-color: var(--primary-color);
+        }
+
+        .equipment-item:hover {
+            border-color: var(--primary-color);
+        }
+
+        .cta-button {
+            background: var(--primary-color);
+            color: white;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            background: var(--primary-hover);
+        }
+
+        .social-links a {
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary-hover);
+        }
+
+        .hero {
+            background-color: var(--background-color);
+        }
+
+        .hero-content {
+            color: var(--text-color);
+        }
+
+        .about-section {
+            padding: 6rem 2rem;
+            background: var(--background-color);
+        }
+
+        .producers-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .producer-card {
+            background: var(--card-background);
+            border-radius: var(--card-radius);
+            padding: 3rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            margin-bottom: 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+        }
+
+        .producer-image-container {
+            position: relative;
+        }
+
+        .producer-image {
+            position: relative;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            aspect-ratio: 3/4;
+        }
+
+        .producer-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%);
+        }
+
+        .producer-quick-info {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .info-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .info-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .producer-header {
+            margin-bottom: 2rem;
+        }
+
+        .producer-info h3 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-weight: 700;
+        }
+
+        .producer-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .producer-bio p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .achievements {
+            margin: 2.5rem 0;
+        }
+
+        .achievements h4, 
+        .genre-expertise h4 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .artist-collaborations,
+        .expertise-areas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .collab-artist,
+        .expertise-tag {
+            padding: 0.6rem 1.2rem;
+            border-radius: 2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .collab-artist {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .expertise-tag {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .collab-artist:hover,
+        .expertise-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(196, 30, 58, 0.2);
+        }
+
+        .genre-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .genre-tag {
+            background: rgba(196, 30, 58, 0.1);
+            color: var(--primary-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .genre-tag:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(196, 30, 58, 0.2);
+        }
+
+        @media (max-width: 1024px) {
+            .producer-card {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                padding: 2rem;
+            }
+
+            .producer-image {
+                max-height: 500px;
+                aspect-ratio: 16/9;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-section {
+                padding: 4rem 1rem;
+            }
+
+            .producer-info h3 {
+                font-size: 2.5rem;
+            }
+
+            .producer-bio p {
+                font-size: 1rem;
+            }
+
+            .genre-tag,
+            .collab-artist,
+            .expertise-tag {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -26,33 +304,112 @@
         </div>
     </header>
 
-    <section class="cards-section">
+    <section class="about-section">
         <div class="section-header">
-            <h2>Studio Features</h2>
-            <p class="section-subtitle">Everything you need for professional recording</p>
+            <h2>Meet Our Producers</h2>
+            <p class="section-subtitle">The talent behind Home Room Recordings</p>
         </div>
-        <div class="cards-container">
-            <div class="card">
-                <i class="fas fa-desktop"></i>
-                <h3>Recording Software</h3>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check"></i> FL Studio</li>
-                    <li><i class="fas fa-check"></i> Logic Pro X</li>
-                </ul>
+
+        <div class="producers-container">
+            <!-- DJ Jail//Break Card -->
+            <div class="producer-card">
+                <div class="producer-image-container">
+                    <div class="producer-image">
+                        <img src="images/djjailbreak.jpeg" alt="DJ Jail//Break in purple lighting" class="producer-photo">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="producer-quick-info">
+                        <div class="info-item">
+                            <span class="info-number">10+</span>
+                            <span class="info-label">Years Experience</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-number">5+</span>
+                            <span class="info-label">Music Genres</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="producer-info">
+                    <div class="producer-header">
+                        <h3>DJ Jail//Break</h3>
+                        <div class="producer-title">Founder & Lead Producer</div>
+                    </div>
+                    <div class="producer-bio">
+                        <p>As one of the founding visionaries of Home Room Recordings, DJ Jail//Break brings over a decade of music industry expertise and passion to every project. His journey in the music scene has been marked by collaborations with some of the industry's biggest names.</p>
+                        
+                        <div class="achievements">
+                            <h4>Career Highlights</h4>
+                            <p>Shared stages with legendary artists including:</p>
+                            <div class="artist-collaborations">
+                                <span class="collab-artist">Tech N9ne</span>
+                                <span class="collab-artist">Snoop Dogg</span>
+                                <span class="collab-artist">E-40</span>
+                                <span class="collab-artist">Vaio</span>
+                                <span class="collab-artist">+ Many More</span>
+                            </div>
+                        </div>
+
+                        <div class="genre-expertise">
+                            <h4>Production Expertise</h4>
+                            <div class="genre-tags">
+                                <span class="genre-tag"><i class="fas fa-music"></i> Hip Hop</span>
+                                <span class="genre-tag"><i class="fas fa-wave-square"></i> Bass House</span>
+                                <span class="genre-tag"><i class="fas fa-record-vinyl"></i> House</span>
+                                <span class="genre-tag"><i class="fas fa-bolt"></i> Dubstep</span>
+                                <span class="genre-tag"><i class="fas fa-fire"></i> Trap</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <i class="fas fa-microphone-alt"></i>
-                <h3>Premium Microphones</h3>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check"></i> Collection of vintage and modern microphones</li>
-                </ul>
-            </div>
-            <div class="card">
-                <i class="fas fa-wifi"></i>
-                <h3>High-Speed Internet</h3>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check"></i> Fast connection for remote sessions and file transfers</li>
-                </ul>
+
+            <!-- DMidd Card -->
+            <div class="producer-card">
+                <div class="producer-image-container">
+                    <div class="producer-image">
+                        <img src="images/dmidd.jpg" alt="DMidd recording in the studio" class="producer-photo">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="producer-quick-info">
+                        <div class="info-item">
+                            <span class="info-number">3+</span>
+                            <span class="info-label">Years Experience</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-number">4+</span>
+                            <span class="info-label">Music Genres</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="producer-info">
+                    <div class="producer-header">
+                        <h3>$DMIDD$</h3>
+                        <div class="producer-title">Founder & Lead Vocal Specialist</div>
+                    </div>
+                    <div class="producer-bio">
+                        <p>As the 2nd founder of Home Room Recordings, $DMIDD$ has established himself as the go-to producer for vocal recording and production. His expertise in capturing the perfect vocal take has made him an essential part of the studio's success.</p>
+                        
+                        <div class="achievements">
+                            <h4>Specialties</h4>
+                            <p>Known for his exceptional vocal recording techniques and production skills across multiple genres.</p>
+                            <div class="expertise-areas">
+                                <span class="expertise-tag">Vocal Recording</span>
+                                <span class="expertise-tag">Mix Engineering</span>
+                                <span class="expertise-tag">Production</span>
+                            </div>
+                        </div>
+
+                        <div class="genre-expertise">
+                            <h4>Production Expertise</h4>
+                            <div class="genre-tags">
+                                <span class="genre-tag"><i class="fas fa-bolt"></i> EDM</span>
+                                <span class="genre-tag"><i class="fas fa-fire"></i> Trap</span>
+                                <span class="genre-tag"><i class="fas fa-music"></i> Hip Hop</span>
+                                <span class="genre-tag"><i class="fas fa-heart"></i> R&B</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

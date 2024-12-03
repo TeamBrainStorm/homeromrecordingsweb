@@ -7,6 +7,250 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="beats.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #C41E3A;  /* Rich Red - classic recording studio color */
+            --primary-hover: #A01830;
+            --secondary-color: #1DB954; /* Spotify Green for success states */
+            --accent-color: #FFD700;   /* Gold for accents */
+            --danger-color: #FF4444;   /* Bright Red for warnings */
+            --background-color: #ffffff;
+            --card-background: #ffffff;
+            --text-color: #1F2937;
+            --text-secondary: #6B7280;
+            --border-color: rgba(0, 0, 0, 0.1);
+            --card-radius: 8px;
+            --button-radius: 6px;
+            --transition: all 0.2s ease;
+        }
+
+        nav {
+            background: var(--primary-color);
+            width: 100%;
+        }
+
+        .nav-container {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .logo {
+            color: white;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: white;
+            background: var(--primary-hover);
+        }
+
+        .beat-card:hover {
+            border-color: var(--primary-color);
+        }
+
+        .license-button {
+            background: var(--primary-color);
+            color: white;
+            transition: var(--transition);
+        }
+
+        .license-button:hover {
+            background: var(--primary-hover);
+        }
+
+        .play-button {
+            color: var(--primary-color);
+        }
+
+        .play-button:hover {
+            color: var(--primary-hover);
+        }
+
+        .social-links a {
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary-hover);
+        }
+
+        .beats-hero {
+            background-color: var(--background-color);
+        }
+
+        .hero-content {
+            color: var(--text-color);
+        }
+
+        .coming-soon-container {
+            max-width: 800px;
+            margin: 4rem auto;
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: var(--card-radius);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .coming-soon-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .icon-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin-bottom: 1rem;
+        }
+
+        .icon-container i {
+            position: absolute;
+        }
+
+        .fa-compact-disc {
+            font-size: 5rem;
+            color: var(--primary-color);
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .fa-music {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .spinning {
+            animation: spin 4s linear infinite;
+        }
+
+        .floating {
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .delay-1 {
+            animation-delay: 0.5s;
+            left: 70%;
+            top: 20%;
+        }
+
+        .delay-2 {
+            animation-delay: 1s;
+            left: 20%;
+            top: 30%;
+        }
+
+        @keyframes spin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 0; }
+            50% { transform: translateY(-20px); opacity: 1; }
+            100% { transform: translateY(-40px); opacity: 0; }
+        }
+
+        .coming-soon-content h3 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .studio-text {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .genre-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .genre-tag {
+            background: rgba(196, 30, 58, 0.1);
+            color: var(--primary-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .genre-tag:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .notify-section {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .notify-section p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .notify-btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: var(--button-radius);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .notify-btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .coming-soon-container {
+                margin: 2rem 1rem;
+                padding: 2rem 1rem;
+            }
+
+            .coming-soon-content h3 {
+                font-size: 2rem;
+            }
+
+            .genre-tags {
+                gap: 0.5rem;
+            }
+
+            .genre-tag {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -27,86 +271,34 @@
         </div>
     </header>
 
-    <section id="beats-section" class="beats-section">
+    <section class="beats-section">
         <div class="section-header">
-            <h2>Beat Collection</h2>
+            <h2>Beats Coming Soon</h2>
+            <p class="section-subtitle">Stay tuned for exclusive heat 🔥</p>
         </div>
 
-        <div class="filters">
-            <button class="filter-btn active" data-genre="all">All Genres</button>
-            <button class="filter-btn" data-genre="hip-hop">Hip Hop</button>
-            <button class="filter-btn" data-genre="rnb">R&B</button>
-            <button class="filter-btn" data-genre="trap">Trap</button>
-            <button class="filter-btn" data-genre="pop">Pop</button>
-        </div>
-
-        <div class="beats-container">
-            <div class="beat-card" data-genre="hip-hop">
-                <div class="beat-header">
-                    <div>
-                        <h3>Summer Vibes</h3>
-                        <span class="genre">Hip Hop</span>
-                    </div>
-                    <button class="play-btn" aria-label="Play Summer Vibes">
-                        <i class="fas fa-play"></i>
-                    </button>
+        <div class="coming-soon-container">
+            <div class="coming-soon-content">
+                <div class="icon-container">
+                    <i class="fas fa-compact-disc spinning"></i>
+                    <i class="fas fa-music floating"></i>
+                    <i class="fas fa-music floating delay-1"></i>
+                    <i class="fas fa-music floating delay-2"></i>
                 </div>
-                <div class="beat-meta">
-                    <span><i class="fas fa-clock"></i> 3:24</span>
-                    <span><i class="fas fa-music"></i> 140 BPM</span>
+                <h3>In The Studio</h3>
+                <p class="studio-text">Crafting heat for every vibe</p>
+                <div class="genre-tags">
+                    <span class="genre-tag"><i class="fas fa-fire"></i> Hip Hop</span>
+                    <span class="genre-tag"><i class="fas fa-heart"></i> R&B</span>
+                    <span class="genre-tag"><i class="fas fa-bolt"></i> Trap</span>
+                    <span class="genre-tag"><i class="fas fa-star"></i> Pop</span>
                 </div>
-                <div class="license-options">
-                    <select aria-label="License Options">
-                        <option value="basic">Basic License - $29.99</option>
-                        <option value="premium">Premium License - $99.99</option>
-                    </select>
-                    <button class="buy-btn">Purchase License</button>
-                </div>
-            </div>
-
-            <div class="beat-card" data-genre="rnb">
-                <div class="beat-header">
-                    <div>
-                        <h3>Midnight Soul</h3>
-                        <span class="genre">R&B</span>
-                    </div>
-                    <button class="play-btn" aria-label="Play Midnight Soul">
-                        <i class="fas fa-play"></i>
-                    </button>
-                </div>
-                <div class="beat-meta">
-                    <span><i class="fas fa-clock"></i> 3:45</span>
-                    <span><i class="fas fa-music"></i> 90 BPM</span>
-                </div>
-                <div class="license-options">
-                    <select aria-label="License Options">
-                        <option value="basic">Basic License - $29.99</option>
-                        <option value="premium">Premium License - $99.99</option>
-                    </select>
-                    <button class="buy-btn">Purchase License</button>
-                </div>
-            </div>
-
-            <div class="beat-card" data-genre="trap">
-                <div class="beat-header">
-                    <div>
-                        <h3>Dark Matter</h3>
-                        <span class="genre">Trap</span>
-                    </div>
-                    <button class="play-btn" aria-label="Play Dark Matter">
-                        <i class="fas fa-play"></i>
-                    </button>
-                </div>
-                <div class="beat-meta">
-                    <span><i class="fas fa-clock"></i> 2:55</span>
-                    <span><i class="fas fa-music"></i> 145 BPM</span>
-                </div>
-                <div class="license-options">
-                    <select aria-label="License Options">
-                        <option value="basic">Basic License - $29.99</option>
-                        <option value="premium">Premium License - $99.99</option>
-                    </select>
-                    <button class="buy-btn">Purchase License</button>
+                <div class="notify-section">
+                    <p>Want first access when beats drop?</p>
+                    <a href="mailto:homeroomrecordings@gmail.com" class="notify-btn">
+                        <i class="fas fa-envelope"></i>
+                        Get Notified
+                    </a>
                 </div>
             </div>
         </div>

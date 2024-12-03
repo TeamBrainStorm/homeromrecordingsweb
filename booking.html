@@ -6,6 +6,245 @@
     <title>Book a Session | Home Room Recordings</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #C41E3A;  /* Rich Red - classic recording studio color */
+            --primary-hover: #A01830;
+            --secondary-color: #1DB954; /* Spotify Green for success states */
+            --accent-color: #FFD700;   /* Gold for accents */
+            --danger-color: #FF4444;   /* Bright Red for warnings */
+            --background-color: #ffffff;
+            --card-background: #ffffff;
+            --text-color: #1F2937;
+            --text-secondary: #6B7280;
+            --border-color: rgba(0, 0, 0, 0.1);
+            --card-radius: 8px;
+            --button-radius: 6px;
+            --transition: all 0.2s ease;
+        }
+
+        nav {
+            background: var(--primary-color);
+            width: 100%;
+        }
+
+        .nav-container {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .logo {
+            color: white;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: white;
+            background: var(--primary-hover);
+        }
+
+        .booking-section {
+            padding: 4rem 2rem;
+            background: var(--background-color);
+        }
+
+        .booking-form {
+            background: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: var(--card-radius);
+            padding: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .form-header h2 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .form-header .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        .form-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--button-radius);
+            background: var(--background-color);
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .booking-slots {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .booking-slot {
+            background: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: var(--card-radius);
+            padding: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .booking-slot:hover {
+            border-color: var(--primary-color);
+        }
+
+        .slot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .slot-header h4 {
+            font-size: 1.1rem;
+            margin: 0;
+            color: var(--text-color);
+        }
+
+        .time-range {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .add-slot-btn {
+            width: 100%;
+            padding: 1rem;
+            margin-top: 1rem;
+            background: var(--background-color);
+            border: 1px dashed var(--border-color);
+            border-radius: var(--card-radius);
+            color: var(--text-secondary);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .add-slot-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .price-summary {
+            background: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: var(--card-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .summary-header h4 {
+            font-size: 1.3rem;
+            margin: 0 0 1.5rem 0;
+            color: var(--text-color);
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-row:last-child {
+            border-bottom: none;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .disclaimer-text {
+            background: rgba(239, 68, 68, 0.05);
+            border-left: 4px solid var(--danger-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: var(--button-radius);
+        }
+
+        .disclaimer-text strong {
+            color: var(--danger-color);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border: none;
+            border-radius: var(--button-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            .booking-section {
+                padding: 2rem 1rem;
+            }
+
+            .booking-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-header h2 {
+                font-size: 2rem;
+            }
+
+            .time-range {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -73,36 +312,13 @@
     </section>
 
     <section class="booking-section">
-        <div class="section-header">
-            <h2>Get Started</h2>
-            <p class="section-subtitle">Choose your preferred way to connect with us</p>
-        </div>
-
-        <div class="contact-grid">
-            <div class="contact-info">
-                <div class="contact-card">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <h3>Email Us</h3>
-                        <p>homeroomrecordings@gmail.com</p>
-                        <a href="mailto:homeroomrecordings@gmail.com" class="contact-link">Send Email</a>
-                    </div>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <h3>Call Us</h3>
-                        <p>(573) 416-0151</p>
-                        <a href="tel:+15734160151" class="contact-link">Call Now</a>
-                    </div>
-                </div>
+        <div class="booking-form">
+            <div class="form-header">
+                <h2>Book Your Session</h2>
+                <p class="section-subtitle">Fill out the form below and we'll get back to you within 24 hours</p>
             </div>
 
-            <form class="booking-form">
-                <div class="form-header">
-                    <h3>Book Your Session</h3>
-                    <p>Fill out the form below and we'll get back to you within 24 hours</p>
-                </div>
+            <div class="form-content">
                 <div class="form-group">
                     <input type="text" id="name" name="name" placeholder="Your Name" required>
                 </div>
@@ -188,7 +404,11 @@
                     </div>
                 </div>
 
-                <div class="disclaimer-text" style="margin: 1rem 0; padding: 1rem; background-color: rgba(0, 0, 0, 0.05); border-radius: var(--card-radius); font-size: 0.9rem; color: var(--text-secondary);">
+                <div class="form-group">
+                    <textarea id="message" name="message" placeholder="Tell us about your project" required></textarea>
+                </div>
+
+                <div class="disclaimer-text">
                     <strong>No Refund Policy:</strong> By clicking the pay button, you acknowledge that there are no refunds available. If you need to reschedule, you must contact us before your scheduled session time, otherwise no refund will be provided for missed sessions.
                 </div>
 
@@ -196,378 +416,155 @@
                     <i class="fab fa-square-cash"></i>
                     <span id="payment-btn-text">Pay Now</span>
                 </button>
-
-                <script>
-                    // Set minimum date to today for all date inputs
-                    const today = new Date().toISOString().split('T')[0];
-                    document.querySelectorAll('.date-input').forEach(input => {
-                        input.min = today;
-                    });
-
-                    function getHourlyRate() {
-                        const service = document.getElementById('service').value;
-                        switch(service) {
-                            case 'recording':
-                                return 20;
-                            case 'mastering_studio':
-                                return 25;
-                            case 'mastering_email':
-                                return 30;
-                            default:
-                                return 0;
-                        }
-                    }
-
-                    function addBookingSlot() {
-                        const container = document.getElementById('booking-slots');
-                        const newSlot = container.children[0].cloneNode(true);
-                        
-                        // Reset values
-                        newSlot.querySelectorAll('input, select').forEach(input => {
-                            input.value = '';
-                        });
-                        
-                        // Show remove button for all slots
-                        document.querySelectorAll('.remove-slot').forEach(btn => {
-                            btn.style.display = 'block';
-                        });
-                        
-                        container.appendChild(newSlot);
-                        updateTotalPrice();
-                    }
-
-                    function removeSlot(button) {
-                        const slot = button.closest('.booking-slot');
-                        const container = document.getElementById('booking-slots');
-                        
-                        if (container.children.length > 1) {
-                            slot.remove();
-                            
-                            // Hide remove button if only one slot left
-                            if (container.children.length === 1) {
-                                container.querySelector('.remove-slot').style.display = 'none';
-                            }
-                        }
-                        updateTotalPrice();
-                    }
-
-                    function updateTotalPrice() {
-                        const hourlyRate = getHourlyRate();
-                        let totalHours = 0;
-                        
-                        document.querySelectorAll('.duration-select').forEach(select => {
-                            totalHours += parseInt(select.value) || 0;
-                        });
-                        
-                        const totalPrice = totalHours * hourlyRate;
-                        
-                        document.getElementById('total-hours').textContent = totalHours;
-                        document.getElementById('total-price').textContent = totalPrice ? `$${totalPrice}` : '$0';
-
-                        // Update rate display in summary
-                        const serviceText = document.getElementById('service').options[document.getElementById('service').selectedIndex].text;
-                        document.getElementById('rate-display').textContent = hourlyRate ? `$${hourlyRate}/hour - ${serviceText.split('(')[0].trim()}` : 'Please select a service';
-
-                        // Enable/disable payment button based on total price
-                        const payButton = document.getElementById('payment-btn');
-                        payButton.disabled = totalPrice === 0;
-                    }
-
-                    // Add event listeners for price updates
-                    document.getElementById('booking-slots').addEventListener('change', function(e) {
-                        if (e.target.classList.contains('duration-select')) {
-                            updateTotalPrice();
-                        }
-                    });
-
-                    // Add rate display to price summary
-                    const summaryContent = document.querySelector('.summary-content');
-                    const rateRow = document.createElement('div');
-                    rateRow.className = 'summary-row';
-                    rateRow.innerHTML = `
-                        <span>Rate:</span>
-                        <span id="rate-display">Please select a service</span>
-                    `;
-                    summaryContent.insertBefore(rateRow, summaryContent.firstChild);
-
-                    // Check if device is mobile
-                    function isMobileDevice() {
-                        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                    }
-
-                    // Update button text based on device
-                    function updatePaymentButton() {
-                        const paymentBtn = document.getElementById('payment-btn');
-                        const paymentBtnText = document.getElementById('payment-btn-text');
-                        const paymentIcon = paymentBtn.querySelector('i');
-
-                        if (isMobileDevice()) {
-                            paymentBtn.style.backgroundColor = '#00D632'; // CashApp green
-                            paymentBtnText.textContent = 'Pay with CashApp';
-                            paymentIcon.className = 'fab fa-square-cash';
-                        } else {
-                            paymentBtn.style.backgroundColor = '#006AFF'; // Square blue
-                            paymentBtnText.textContent = 'Pay with Square';
-                            paymentIcon.className = 'fas fa-credit-card';
-                        }
-                    }
-
-                    // Handle payment based on device
-                    function handlePayment() {
-                        const totalPrice = document.getElementById('total-price').textContent;
-                        const amount = totalPrice.replace('$', '');
-                        const customerName = document.getElementById('name').value;
-                        const serviceText = document.getElementById('service').options[document.getElementById('service').selectedIndex].text;
-                        const note = `${customerName} - ${serviceText}`;
-
-                        if (isMobileDevice()) {
-                            // Redirect to CashApp
-                            const cashtag = 'HomeroomRecordings';
-                            const cashappURL = `https://cash.app/$${cashtag}/${amount}`;
-                            window.location.href = cashappURL;
-                        } else {
-                            // Redirect to Square payment page
-                            const squareURL = 'https://square.link/u/uW2ZU7EE';
-                            window.location.href = squareURL;
-                        }
-
-                        // Save form data
-                        const formData = {
-                            name: document.getElementById('name').value,
-                            email: document.getElementById('email').value,
-                            phone: document.getElementById('phone').value,
-                            service: document.getElementById('service').value,
-                            dates: Array.from(document.getElementsByName('dates[]')).map(input => input.value),
-                            times: Array.from(document.getElementsByName('start_times[]')).map(select => select.value),
-                            durations: Array.from(document.getElementsByName('durations[]')).map(select => select.value),
-                            message: document.getElementById('message').value,
-                            amount: amount,
-                            paymentMethod: isMobileDevice() ? 'CashApp' : 'Square'
-                        };
-                        localStorage.setItem('bookingFormData', JSON.stringify(formData));
-                    }
-
-                    // Initialize payment button on page load
-                    window.onload = function() {
-                        updatePaymentButton();
-                        
-                        // Check for returning payment
-                        const formData = localStorage.getItem('bookingFormData');
-                        if (formData) {
-                            localStorage.removeItem('bookingFormData');
-                            alert('Thank you for your payment! We will contact you shortly to confirm your booking.');
-                        }
-                    }
-                </script>
-
-                <style>
-                    .booking-slots {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 1.5rem;
-                        margin-bottom: 1rem;
-                    }
-
-                    .booking-slot {
-                        background: var(--card-background);
-                        border: 1px solid rgba(0, 0, 0, 0.1);
-                        border-radius: var(--card-radius);
-                        padding: 1.5rem;
-                    }
-
-                    .slot-header {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        margin-bottom: 1rem;
-                    }
-
-                    .slot-header h4 {
-                        margin: 0;
-                        font-size: 1rem;
-                        font-weight: 500;
-                    }
-
-                    .remove-slot {
-                        background: none;
-                        border: none;
-                        color: var(--text-secondary);
-                        cursor: pointer;
-                        padding: 0.5rem;
-                        border-radius: 50%;
-                        transition: var(--transition);
-                    }
-
-                    .remove-slot:hover {
-                        background-color: rgba(0, 0, 0, 0.05);
-                        color: var(--text-color);
-                    }
-
-                    .slot-inputs {
-                        display: grid;
-                        gap: 1rem;
-                    }
-
-                    .time-range {
-                        display: grid;
-                        grid-template-columns: 1fr 1fr;
-                        gap: 1rem;
-                    }
-
-                    .add-slot-btn {
-                        width: 100%;
-                        padding: 1rem;
-                        background-color: var(--background-color);
-                        border: 1px dashed rgba(0, 0, 0, 0.2);
-                        border-radius: var(--card-radius);
-                        color: var(--text-secondary);
-                        cursor: pointer;
-                        transition: var(--transition);
-                        margin-top: 1rem;
-                    }
-
-                    .add-slot-btn:hover {
-                        background-color: rgba(0, 0, 0, 0.02);
-                        border-color: var(--primary-color);
-                        color: var(--primary-color);
-                    }
-
-                    .price-summary {
-                        background: var(--card-background);
-                        border: 1px solid rgba(0, 0, 0, 0.1);
-                        border-radius: var(--card-radius);
-                        padding: 1.5rem;
-                        margin-top: 2rem;
-                    }
-
-                    .summary-header h4 {
-                        margin: 0 0 1rem 0;
-                        font-size: 1.1rem;
-                        font-weight: 500;
-                    }
-
-                    .summary-content {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 0.5rem;
-                    }
-
-                    .summary-row {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        padding: 0.5rem 0;
-                        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-                    }
-
-                    .summary-row:last-child {
-                        border-bottom: none;
-                        font-weight: 600;
-                    }
-
-                    @media (max-width: 768px) {
-                        .time-range {
-                            grid-template-columns: 1fr;
-                        }
-                    }
-
-                    .payment-section {
-                        margin-top: 2rem;
-                        padding-top: 1.5rem;
-                        border-top: 1px solid rgba(0, 0, 0, 0.1);
-                    }
-
-                    .payment-section h4 {
-                        margin: 0 0 1rem 0;
-                        font-size: 1.1rem;
-                        font-weight: 500;
-                    }
-
-                    .cashapp-info {
-                        background: rgba(0, 0, 0, 0.02);
-                        border-radius: var(--card-radius);
-                        padding: 1.5rem;
-                        text-align: center;
-                    }
-
-                    .cashapp-logo {
-                        height: 40px;
-                        margin-bottom: 1rem;
-                    }
-
-                    .cashapp-info p {
-                        margin: 0.5rem 0;
-                        color: var(--text-secondary);
-                    }
-
-                    .cashapp-info strong {
-                        color: var(--text-color);
-                        font-weight: 600;
-                        background: rgba(0, 0, 0, 0.05);
-                        padding: 0.3rem 0.8rem;
-                        border-radius: var(--button-radius);
-                    }
-
-                    .payment-steps {
-                        margin-top: 1.5rem;
-                        text-align: left;
-                    }
-
-                    .payment-steps p {
-                        margin: 0.5rem 0;
-                        font-size: 0.9rem;
-                        color: var(--text-secondary);
-                    }
-
-                    .submit-btn {
-                        margin-top: 1.5rem;
-                        width: 100%;
-                        padding: 1rem;
-                        color: white;
-                        border: none;
-                        border-radius: var(--button-radius);
-                        font-size: 1rem;
-                        font-weight: 500;
-                        cursor: pointer;
-                        transition: var(--transition);
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        gap: 0.5rem;
-                    }
-
-                    .submit-btn:hover:not(:disabled) {
-                        filter: brightness(95%);
-                        transform: translateY(-2px);
-                    }
-
-                    .submit-btn:disabled {
-                        background-color: #cccccc !important;
-                        cursor: not-allowed;
-                        transform: none;
-                    }
-
-                    .submit-btn i {
-                        font-size: 1.2rem;
-                    }
-
-                    @media (max-width: 768px) {
-                        .cashapp-info {
-                            padding: 1rem;
-                        }
-
-                        .cashapp-logo {
-                            height: 32px;
-                        }
-                    }
-                </style>
-
-                <div class="form-group">
-                    <textarea id="message" name="message" placeholder="Tell us about your project" required></textarea>
-                </div>
-            </form>
+            </div>
         </div>
     </section>
+
+    <script>
+        // Set minimum date to today for all date inputs
+        const today = new Date().toISOString().split('T')[0];
+        document.querySelectorAll('.date-input').forEach(input => {
+            input.min = today;
+        });
+
+        function getHourlyRate() {
+            const service = document.getElementById('service').value;
+            switch(service) {
+                case 'recording':
+                    return 20;
+                case 'mastering_studio':
+                    return 25;
+                case 'mastering_email':
+                    return 30;
+                default:
+                    return 0;
+            }
+        }
+
+        function addBookingSlot() {
+            const container = document.getElementById('booking-slots');
+            const newSlot = container.children[0].cloneNode(true);
+            
+            // Reset values
+            newSlot.querySelectorAll('input, select').forEach(input => {
+                input.value = '';
+            });
+            
+            // Show remove button for all slots
+            document.querySelectorAll('.remove-slot').forEach(btn => {
+                btn.style.display = 'block';
+            });
+            
+            container.appendChild(newSlot);
+            updateTotalPrice();
+        }
+
+        function removeSlot(button) {
+            const slot = button.closest('.booking-slot');
+            const container = document.getElementById('booking-slots');
+            
+            if (container.children.length > 1) {
+                slot.remove();
+                
+                // Hide remove button if only one slot left
+                if (container.children.length === 1) {
+                    container.querySelector('.remove-slot').style.display = 'none';
+                }
+            }
+            updateTotalPrice();
+        }
+
+        function updateTotalPrice() {
+            const hourlyRate = getHourlyRate();
+            let totalHours = 0;
+            
+            document.querySelectorAll('.duration-select').forEach(select => {
+                totalHours += parseInt(select.value) || 0;
+            });
+            
+            const totalPrice = totalHours * hourlyRate;
+            
+            document.getElementById('total-hours').textContent = totalHours;
+            document.getElementById('total-price').textContent = totalPrice ? `$${totalPrice}` : '$0';
+
+            // Update rate display in summary
+            const serviceText = document.getElementById('service').options[document.getElementById('service').selectedIndex].text;
+            document.getElementById('rate-display').textContent = hourlyRate ? `$${hourlyRate}/hour - ${serviceText.split('(')[0].trim()}` : 'Please select a service';
+
+            // Enable/disable payment button based on total price
+            const payButton = document.getElementById('payment-btn');
+            payButton.disabled = totalPrice === 0;
+        }
+
+        // Check if device is mobile
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // Update button text based on device
+        function updatePaymentButton() {
+            const paymentBtn = document.getElementById('payment-btn');
+            const paymentBtnText = document.getElementById('payment-btn-text');
+            const paymentIcon = paymentBtn.querySelector('i');
+
+            if (isMobileDevice()) {
+                paymentBtn.style.backgroundColor = '#00D632'; // CashApp green
+                paymentBtnText.textContent = 'Pay with CashApp';
+                paymentIcon.className = 'fab fa-square-cash';
+            } else {
+                paymentBtn.style.backgroundColor = '#006AFF'; // Square blue
+                paymentBtnText.textContent = 'Pay with Square';
+                paymentIcon.className = 'fas fa-credit-card';
+            }
+        }
+
+        // Handle payment based on device
+        function handlePayment() {
+            const totalPrice = document.getElementById('total-price').textContent;
+            const amount = totalPrice.replace('$', '');
+            const customerName = document.getElementById('name').value;
+            const serviceText = document.getElementById('service').options[document.getElementById('service').selectedIndex].text;
+            const note = `${customerName} - ${serviceText}`;
+
+            if (isMobileDevice()) {
+                // Redirect to CashApp
+                const cashtag = 'HomeroomRecordings';
+                const cashappURL = `https://cash.app/$${cashtag}/${amount}`;
+                window.location.href = cashappURL;
+            } else {
+                // Redirect to Square payment page
+                const squareURL = 'https://square.link/u/uW2ZU7EE';
+                window.location.href = squareURL;
+            }
+
+            // Save form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                service: document.getElementById('service').value,
+                dates: Array.from(document.getElementsByName('dates[]')).map(input => input.value),
+                times: Array.from(document.getElementsByName('start_times[]')).map(select => select.value),
+                durations: Array.from(document.getElementsByName('durations[]')).map(select => select.value),
+                message: document.getElementById('message').value,
+                amount: amount,
+                paymentMethod: isMobileDevice() ? 'CashApp' : 'Square'
+            };
+            localStorage.setItem('bookingFormData', JSON.stringify(formData));
+        }
+
+        // Initialize payment button on page load
+        window.onload = function() {
+            updatePaymentButton();
+            
+            // Check for returning payment
+            const formData = localStorage.getItem('bookingFormData');
+            if (formData) {
+                localStorage.removeItem('bookingFormData');
+                alert('Thank you for your payment! We will contact you shortly to confirm your booking.');
+            }
+        }
+    </script>
 
     <footer>
         <div class="footer-content">
@@ -586,12 +583,16 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Follow Us</h3>
-                    <div class="social-links">
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <h3>Contact Us</h3>
+                    <div class="footer-contact-buttons">
+                        <a href="mailto:homeroomrecordings@gmail.com" class="contact-button">
+                            <i class="fas fa-envelope"></i>
+                            Send Email
+                        </a>
+                        <a href="tel:+15734160151" class="contact-button">
+                            <i class="fas fa-phone"></i>
+                            Call Now
+                        </a>
                     </div>
                 </div>
             </div>
