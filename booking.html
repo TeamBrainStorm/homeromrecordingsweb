@@ -13,8 +13,7 @@
             <div class="logo">Home Room Recordings</div>
             <ul class="nav-links">
                 <li><a href="index.html#services">Services</a></li>
-                <li><a href="index.html#studio">Studio</a></li>
-                <li><a href="index.html#gear">Gear</a></li>
+                <li><a href="studio.html">Studio</a></li>
                 <li><a href="beats.html">Beats</a></li>
                 <li><a href="booking.html" class="active">Book Now</a></li>
             </ul>
@@ -27,74 +26,6 @@
             <p>Let's bring your music to life</p>
         </div>
     </header>
-
-    <section class="booking-section">
-        <div class="section-header">
-            <h2>Get Started</h2>
-            <p class="section-subtitle">Choose your preferred way to connect with us</p>
-        </div>
-
-        <div class="contact-grid">
-            <div class="contact-info">
-                <div class="contact-card">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <h3>Email Us</h3>
-                        <p>homeroomrecordings@gmail.com</p>
-                        <a href="mailto:homeroomrecordings@gmail.com" class="contact-link">Send Email</a>
-                    </div>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <h3>Call Us</h3>
-                        <p>(573) 416-0151</p>
-                        <a href="tel:+15734160151" class="contact-link">Call Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <form class="booking-form">
-                <div class="form-header">
-                    <h3>Book Your Session</h3>
-                    <p>Fill out the form below and we'll get back to you within 24 hours</p>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="email" name="email" placeholder="Your Email" required>
-                </div>
-                <div class="form-group">
-                    <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
-                </div>
-                <div class="form-group">
-                    <select id="service" name="service" required>
-                        <option value="">Select Service</option>
-                        <option value="recording">Recording Session</option>
-                        <option value="mixing">Mixing</option>
-                        <option value="mastering">Mastering</option>
-                        <option value="production">Full Production</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <input type="date" id="date" name="date" required>
-                </div>
-                <div class="form-group">
-                    <select id="time" name="time" required>
-                        <option value="">Preferred Time</option>
-                        <option value="morning">Morning (9AM - 1PM)</option>
-                        <option value="afternoon">Afternoon (2PM - 6PM)</option>
-                        <option value="evening">Evening (7PM - 11PM)</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <textarea id="message" name="message" placeholder="Tell us about your project" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Book Session</button>
-            </form>
-        </div>
-    </section>
 
     <section id="rates" class="rates-section">
         <div class="section-header">
@@ -141,20 +72,342 @@
         </div>
     </section>
 
+    <section class="booking-section">
+        <div class="section-header">
+            <h2>Get Started</h2>
+            <p class="section-subtitle">Choose your preferred way to connect with us</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email Us</h3>
+                        <p>homeroomrecordings@gmail.com</p>
+                        <a href="mailto:homeroomrecordings@gmail.com" class="contact-link">Send Email</a>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <h3>Call Us</h3>
+                        <p>(573) 416-0151</p>
+                        <a href="tel:+15734160151" class="contact-link">Call Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <form class="booking-form">
+                <div class="form-header">
+                    <h3>Book Your Session</h3>
+                    <p>Fill out the form below and we'll get back to you within 24 hours</p>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <select id="service" name="service" required onchange="updateTotalPrice()">
+                        <option value="">Select Service</option>
+                        <option value="recording">Recording Session ($20/hour)</option>
+                        <option value="mastering_studio">In Studio Mastering ($25/hour)</option>
+                        <option value="mastering_email">Email Mastering ($30/hour)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="booking-dates">Select Dates and Times</label>
+                    <div id="booking-slots" class="booking-slots">
+                        <div class="booking-slot">
+                            <div class="slot-header">
+                                <h4>Booking Slot</h4>
+                                <button type="button" class="remove-slot" onclick="removeSlot(this)" style="display: none;">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="slot-inputs">
+                                <input type="date" name="dates[]" required min="" class="date-input">
+                                <div class="time-range">
+                                    <select name="start_times[]" required class="time-select">
+                                        <option value="">Start Time</option>
+                                        <option value="9">9:00 AM</option>
+                                        <option value="10">10:00 AM</option>
+                                        <option value="11">11:00 AM</option>
+                                        <option value="12">12:00 PM (Noon)</option>
+                                        <option value="13">1:00 PM</option>
+                                        <option value="14">2:00 PM</option>
+                                        <option value="15">3:00 PM</option>
+                                        <option value="16">4:00 PM</option>
+                                        <option value="17">5:00 PM</option>
+                                        <option value="18">6:00 PM</option>
+                                        <option value="19">7:00 PM</option>
+                                        <option value="20">8:00 PM</option>
+                                        <option value="21">9:00 PM</option>
+                                        <option value="22">10:00 PM</option>
+                                        <option value="23">11:00 PM</option>
+                                        <option value="24">12:00 AM</option>
+                                    </select>
+                                    <select name="durations[]" required class="duration-select">
+                                        <option value="">Duration</option>
+                                        <option value="1">1 Hour</option>
+                                        <option value="2">2 Hours</option>
+                                        <option value="3">3 Hours</option>
+                                        <option value="4">4 Hours</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="add-slot-btn" onclick="addBookingSlot()">
+                        <i class="fas fa-plus"></i> Add Another Time Slot
+                    </button>
+                </div>
+
+                <div class="price-summary" id="price-summary">
+                    <div class="summary-header">
+                        <h4>Booking Summary</h4>
+                    </div>
+                    <div class="summary-content">
+                        <div class="summary-row">
+                            <span>Total Hours:</span>
+                            <span id="total-hours">0</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Total Price:</span>
+                            <span id="total-price">$0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    // Set minimum date to today for all date inputs
+                    const today = new Date().toISOString().split('T')[0];
+                    document.querySelectorAll('.date-input').forEach(input => {
+                        input.min = today;
+                    });
+
+                    function getHourlyRate() {
+                        const service = document.getElementById('service').value;
+                        switch(service) {
+                            case 'recording':
+                                return 20;
+                            case 'mastering_studio':
+                                return 25;
+                            case 'mastering_email':
+                                return 30;
+                            default:
+                                return 0;
+                        }
+                    }
+
+                    function addBookingSlot() {
+                        const container = document.getElementById('booking-slots');
+                        const newSlot = container.children[0].cloneNode(true);
+                        
+                        // Reset values
+                        newSlot.querySelectorAll('input, select').forEach(input => {
+                            input.value = '';
+                        });
+                        
+                        // Show remove button for all slots
+                        document.querySelectorAll('.remove-slot').forEach(btn => {
+                            btn.style.display = 'block';
+                        });
+                        
+                        container.appendChild(newSlot);
+                        updateTotalPrice();
+                    }
+
+                    function removeSlot(button) {
+                        const slot = button.closest('.booking-slot');
+                        const container = document.getElementById('booking-slots');
+                        
+                        if (container.children.length > 1) {
+                            slot.remove();
+                            
+                            // Hide remove button if only one slot left
+                            if (container.children.length === 1) {
+                                container.querySelector('.remove-slot').style.display = 'none';
+                            }
+                        }
+                        updateTotalPrice();
+                    }
+
+                    function updateTotalPrice() {
+                        const hourlyRate = getHourlyRate();
+                        let totalHours = 0;
+                        
+                        document.querySelectorAll('.duration-select').forEach(select => {
+                            totalHours += parseInt(select.value) || 0;
+                        });
+                        
+                        const totalPrice = totalHours * hourlyRate;
+                        
+                        document.getElementById('total-hours').textContent = totalHours;
+                        document.getElementById('total-price').textContent = totalPrice ? `$${totalPrice}` : '$0';
+
+                        // Update rate display in summary
+                        const serviceText = document.getElementById('service').options[document.getElementById('service').selectedIndex].text;
+                        document.getElementById('rate-display').textContent = hourlyRate ? `$${hourlyRate}/hour - ${serviceText.split('(')[0].trim()}` : 'Please select a service';
+                    }
+
+                    // Add event listeners for price updates
+                    document.getElementById('booking-slots').addEventListener('change', function(e) {
+                        if (e.target.classList.contains('duration-select')) {
+                            updateTotalPrice();
+                        }
+                    });
+
+                    // Add rate display to price summary
+                    const summaryContent = document.querySelector('.summary-content');
+                    const rateRow = document.createElement('div');
+                    rateRow.className = 'summary-row';
+                    rateRow.innerHTML = `
+                        <span>Rate:</span>
+                        <span id="rate-display">Please select a service</span>
+                    `;
+                    summaryContent.insertBefore(rateRow, summaryContent.firstChild);
+                </script>
+
+                <style>
+                    .booking-slots {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1.5rem;
+                        margin-bottom: 1rem;
+                    }
+
+                    .booking-slot {
+                        background: var(--card-background);
+                        border: 1px solid rgba(0, 0, 0, 0.1);
+                        border-radius: var(--card-radius);
+                        padding: 1.5rem;
+                    }
+
+                    .slot-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 1rem;
+                    }
+
+                    .slot-header h4 {
+                        margin: 0;
+                        font-size: 1rem;
+                        font-weight: 500;
+                    }
+
+                    .remove-slot {
+                        background: none;
+                        border: none;
+                        color: var(--text-secondary);
+                        cursor: pointer;
+                        padding: 0.5rem;
+                        border-radius: 50%;
+                        transition: var(--transition);
+                    }
+
+                    .remove-slot:hover {
+                        background-color: rgba(0, 0, 0, 0.05);
+                        color: var(--text-color);
+                    }
+
+                    .slot-inputs {
+                        display: grid;
+                        gap: 1rem;
+                    }
+
+                    .time-range {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 1rem;
+                    }
+
+                    .add-slot-btn {
+                        width: 100%;
+                        padding: 1rem;
+                        background-color: var(--background-color);
+                        border: 1px dashed rgba(0, 0, 0, 0.2);
+                        border-radius: var(--card-radius);
+                        color: var(--text-secondary);
+                        cursor: pointer;
+                        transition: var(--transition);
+                        margin-top: 1rem;
+                    }
+
+                    .add-slot-btn:hover {
+                        background-color: rgba(0, 0, 0, 0.02);
+                        border-color: var(--primary-color);
+                        color: var(--primary-color);
+                    }
+
+                    .price-summary {
+                        background: var(--card-background);
+                        border: 1px solid rgba(0, 0, 0, 0.1);
+                        border-radius: var(--card-radius);
+                        padding: 1.5rem;
+                        margin-top: 2rem;
+                    }
+
+                    .summary-header h4 {
+                        margin: 0 0 1rem 0;
+                        font-size: 1.1rem;
+                        font-weight: 500;
+                    }
+
+                    .summary-content {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.5rem;
+                    }
+
+                    .summary-row {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 0.5rem 0;
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                    }
+
+                    .summary-row:last-child {
+                        border-bottom: none;
+                        font-weight: 600;
+                    }
+
+                    @media (max-width: 768px) {
+                        .time-range {
+                            grid-template-columns: 1fr;
+                        }
+                    }
+                </style>
+
+                <div class="form-group">
+                    <textarea id="message" name="message" placeholder="Tell us about your project" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Book Session</button>
+            </form>
+        </div>
+    </section>
+
     <footer>
         <div class="footer-content">
             <div class="footer-grid">
                 <div class="footer-section">
                     <h3>Home Room Recordings</h3>
-                    <p>Professional recording studio in Nashville, TN</p>
+                    <p>Professional Recording Studio</p>
                 </div>
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="index.html#services">Services</a></li>
-                        <li><a href="index.html#studio">Studio</a></li>
-                        <li><a href="index.html#gear">Gear</a></li>
+                        <li><a href="studio.html">Studio</a></li>
                         <li><a href="beats.html">Beats</a></li>
+                        <li><a href="booking.html">Book Now</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
