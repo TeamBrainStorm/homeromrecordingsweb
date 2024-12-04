@@ -82,12 +82,12 @@ nav {
 }
 
 .logo {
-    height: 150px;
+    height: 70px;
     width: auto;
 }
 
 .logo img {
-    height: 100%;
+    height: 150%;
     width: auto;
     object-fit: contain;
 }
